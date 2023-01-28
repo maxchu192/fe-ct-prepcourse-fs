@@ -94,6 +94,14 @@ function verificarPassword(objetoUsuario, password) {
    // Verifica si la propiedad "password" del "objetoUsuario" coincide con el parámetro "password".
    // En ese caso retornar true. Caso contrario, false.
    // Tu código:
+   var esIgual;
+
+   if (objetoUsuario.password === password){
+      esIgual = true;
+   } else {
+      esIgual = false;
+   }
+   return esIgual;
 }
 
 function actualizarPassword(objetoUsuario, nuevaPassword) {
@@ -101,6 +109,9 @@ function actualizarPassword(objetoUsuario, nuevaPassword) {
    // La nueva contraseña la recibes por parámetro.
    // Retornar el objeto.
    // Tu código:
+   objetoUsuario.password = nuevaPassword;
+
+   return objetoUsuario;
 }
 
 function agregarAmigo(objetoUsuario, nuevoAmigo) {
@@ -108,6 +119,9 @@ function agregarAmigo(objetoUsuario, nuevoAmigo) {
    // Debes agregar el "nuevoAmigo" al final de este arreglo.
    // Retornar el objeto.
    // Tu código:
+   objetoUsuario["amigos"].push(nuevoAmigo);
+
+   return objetoUsuario;
 }
 
 function pasarUsuarioAPremium(objetoMuchosUsuarios) {
@@ -116,6 +130,11 @@ function pasarUsuarioAPremium(objetoMuchosUsuarios) {
    // Define esta propiedad de todos los usuarios como true.
    // Retornar el arreglo.
    // Tu código:
+   for (let usuario of objetoMuchosUsuarios){
+      usuario.esPremium = true;
+   }
+   
+   return objetoMuchosUsuarios;
 }
 
 function sumarLikesDeUsuario(objetoUsuario) {
@@ -124,6 +143,11 @@ function sumarLikesDeUsuario(objetoUsuario) {
    // Cada post posee una propiedad llamada "likes". Esta propiedad es un número.
    // Debes sumar los likes de todos los post y retornar el resultado.
    // Tu código:
+   let sumaLikes = 0;
+
+   objetoUsuario.posts.forEach(post => sumaLikes += post.likes);
+
+   return sumaLikes;
 }
 
 function agregarMetodoCalculoDescuento(objetoProducto) {
@@ -137,6 +161,12 @@ function agregarMetodoCalculoDescuento(objetoProducto) {
    // PorcentajeDeDescuento ---> 0.2
    // Precio final ---> 8
    // Tu código:
+   objetoProducto['calcularPrecioDescuento'] = function() {
+      const descuento = objetoProducto.precio * objetoProducto.porcentajeDeDescuento;
+      return objetoProducto.precio - descuento;
+   }
+
+   return objetoProducto;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
